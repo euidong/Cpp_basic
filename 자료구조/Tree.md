@@ -74,9 +74,70 @@ struct TreeNode
   void Print(std::ofstream& outFile) const;
 ```
 
+# Tree Traversal = Tree의 모든 노드를 방문하는 방법
+  - inorder = (안) 왼쪽으로 이동 후, 데이터를 처리하고, 오른쪽으로 이동 한다. 
+  - preorder = (이전) 데이터를 처리하고, 왼쪽으로 이동 후, 오른쪽으로 이동 한다. 
+  - postorder = (이후) 왼쪽으로 이동 후, 오른쪽으로 이동하고, 데이터를 처리하고
+  - level by level traversal = 해당 노드에서 좌, 우 값을 queue에 넣고 데이터를 분석하고, queue에서 하나의 데이터를 dequeue한다.<br>
+  dequeue된 노드를 이용하여 위의 과정을 반복한다.
 
-# level by level로 데이터 찾기
-해당 노드에서 좌, 우 값을 queue에 넣고 데이터를 분석하고, queue에서 하나의 데이터를 dequeue한다.<br>
-dequeue된 노드를 이용하여 위의 과정을 반복한다.
+### 코드 표현
+```c++
+void PreOrder(TreeNode* tree, 
+     QueType& preQue)
+// Post: preQue contains the tree items in preorder.
+{
+  if (tree != NULL)
+  {
+    preQue.Enqueue(tree->info);
+    PreOrder(tree->left, preQue);
+    PreOrder(tree->right, preQue);
+  }
+}
+
+
+void InOrder(TreeNode* tree, 
+     QueType& inQue)
+// Post: inQue contains the tree items in inorder.
+{
+  if (tree != NULL)
+  {
+    InOrder(tree->left, inQue);
+    inQue.Enqueue(tree->info);
+    InOrder(tree->right, inQue);
+  }
+}
+
+
+void PostOrder(TreeNode* tree, 
+     QueType& postQue)
+// Post: postQue contains the tree items in postorder.
+{
+  if (tree != NULL)
+  {
+    PostOrder(tree->left, postQue);
+    PostOrder(tree->right, postQue);
+    postQue.Enqueue(tree->info);
+  }
+}
+
+void LevelByLevel (TreeNode* tree,
+      QueType& levelQue, QueType& instantQue)
+{
+  if (tree != NULL)
+  {
+    TreeType get_next;
+    instantQue.Enqueue(tree->left); //treetype*를 저장
+    instantQue.Enqueue(tree->right);//treetype*를 저장
+    levelQue.Enqueue(tree->info); // 아무 type이나 저장
+    if (!instantQue.IsEmpty())
+    {
+      instantQue.dequeue(get_next);
+      LevelByLevel(get_next, levelQue, instantQue);
+    }
+  }
+}
+```
+
 
 
