@@ -13,7 +13,7 @@
   - Full Tree = 모든 Level이 꽉 차 있는 Tree.
   - Composit Tree = 모든 Node가 가질 수 있는 모든 자식 Node를 갖거나, Leaf Node여야 한다.
   
-###Tree의 특징
+### Tree의 특징
   - Root Node로 부터 다른 Node에 접근하는 경로가 유일해야 한다.
 
 # Binary Tree의 특징
