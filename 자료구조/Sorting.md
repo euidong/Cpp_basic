@@ -137,7 +137,7 @@ K차 시행 횟수 : 최대 K (뒤에서 K+1 번째 원소와 뒤에 있는 값�
 => 항상 그런 것은 아니지만, 대게 적은 수를 Sorting할 때는 속도가 빠르다.
 
 ### Bubble VS Insert
-=> bubble : 모든 시행을 안할 수도 있지만, 한 번 시행 시 모든 값을 탐색해야한다.
+=> bubble : 모든 시행을 안할 수도 있지만, 한 번 시행 시 모든 값을 탐색해야한다. <br>
 => insert : 모든 시행을 해야하지만, 시행 시에 모든 값을 탐색하지 않는 경우가 많다.
 ## Complex Sorting Algorithm
 
@@ -194,3 +194,8 @@ void HeapSort(Student ary[], int numElems)
 K 회차 :                         //			       => 최대 logN
 
 총 시행 횟수 : N / 2 + logN * N => (Worst case) N * logN
+
+### 2. Quick Sort Algorithm
+
+
+### 3. Merge Sort Algorithm
