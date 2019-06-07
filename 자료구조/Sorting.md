@@ -197,9 +197,150 @@ void HeapSort(Student ary[], int numElems)
 1 회차 : Heap에서 데이터 빼기 + leaf Node를 위로 올리고 ReHeapDown => 최대 logN <br>
 K 회차 :                         //			       => 최대 logN
 
-총 시행 횟수 : N / 2 + logN * N => (Worst case) N * logN
+총 시행 횟수 : N / 2 + logN * N => N * logN
 
 ### 2. Quick Sort Algorithm
+Idea : 중간값을 기준으로 배열을 쪼개고, 다시 쪼개면서 값을 구하면 더 빠르지 않을까?
 
+Issue : 중간값을 찾는 것이 비싼 연산 과정이다.<br>
+=> 완전한 중간값을 찾으면 좋지만, random한 수라면 적절하게 배열을 잘라줄 것이다. <br>
+=> random한 수 = 배열의 첫 번째 수로 하자.
+
+	1. 배열의 첫 번째 값을 기준으로 삼는다.
+	2. 배열의 첫 번째 값을 제외한 양 끝 지점을 index로 가르키는 포인터를 만든다.
+	3. 왼쪽은 크면 이동, 오른쪽은 작으면 이동한다.
+	4. 둘이 교차할 때까지 움직이며, 그 전에 둘 다 멈추게 되면 두 값을 Swap한다.
+	5. 둘이 교차하고, back에서 온 포인터가 가르키는 값과 배열의 첫 번째 값을 Swap한다.
+
+	- Generic case : 기준점의 위치를 찾고 배열을 둘로 쪼갠다.
+	- Base case : 배열의 크기가 2라면, 서로 값을 비교하고 끝낸다.<br>
+	1이라면 그냥 끝낸다. 
+	
+```c++
+void QuickSort(Student values[], int first, int last)
+{
+	if (first + 1 == last)
+	{
+		if (values[first] > values[last])
+			Swap(values[first], values[last]);
+		return;
+	}
+	else if (first == last + 1)
+		return;
+
+	int front_point = first + 1;
+	int back_point =last;
+
+
+	while (front_point <= back_point)
+	{
+		if (values[first] > values[front_point])
+			front_point++;
+		else if (values[first] < values[back_point])
+			back_point--;
+		else
+			Swap(values[front_point], values[back_point]);
+	}
+
+	Swap(values[first], values[back_point]);
+	QuickSort(values, first, back_point - 1);
+	QuickSort(values, back_point + 1, last);
+
+	return;
+}
+```
+
+복잡도 : O(N * logN)
+
+원자의 수 : N
+
+1 회차 : 기준점으로 배열 나누기 => N <br>
+2 회차 : 2개의 배열을 각 각의 기준점으로 나누기 => N = a + (N - a) <br>
+K 회차 : 2^(K - 1)개의 배열을 각 각의 기준점으로 나누기 => N
+
+총 시행 횟수 : logN * N => (Best case) N * logN
+이미 정렬되어 있다면, N^2까지 수행한다.
 
 ### 3. Merge Sort Algorithm
+Idea : Quick이 쪼개면서 내려갔다면, Merge는 합치면서 올라오자.
+=> 중간값을 정확히 찾을 수는 없지만, 배열의 크기를 반으로 자르는 것은 가능하다.
+
+	1. 배열을 모두 잘게 쪼갠다.
+	2. 밑에서부터 배열을 정렬하면서 합친다.
+	3. 정렬하면서 합칠 때는, 두개의 배열의 인덱스 값을 가르킬 포인터가 필요.
+	
+```c++
+Student* merge(Student values[], int front, int middle, int back)
+{
+	Student* temp;
+	temp = new Student[back - front + 1];
+
+	int ptr1 = front;
+	int ptr2 = middle + 1;
+	int size1 = middle - front + 1;
+	int size2 = back - middle;
+	int count = 0;
+	while (ptr1 < size1 && ptr2 < size2+ middle + 1)
+	{
+		if (values[ptr1] < values[ptr2])
+		{
+			temp[count] = values[ptr1];
+			ptr1++;
+			count++;
+		}
+		else
+		{
+			temp[count] = values[ptr2];
+			ptr2++;
+			count++;
+		}
+	}
+	if (ptr1 != size1)
+	{
+		while (ptr1 < size1)
+		{
+			temp[count] = values[ptr1];
+			ptr1++;
+			count++;
+		}
+	}
+	else if (ptr2 != size2)
+	{
+		while (ptr2 < size2)
+		{
+			temp[count] = values[ptr2];
+			ptr2++;
+			count++;
+		}
+	}
+
+	for (int i = 0; i < count; i++)
+	{
+		values[front + i] = temp[i];
+	}
+	delete temp;
+
+	return values;
+}
+
+void MergeSort(Student values[], int front, int back)
+{
+	if (front == back)
+		return;
+
+	int middle = (back - front) / 2;
+	MergeSort(values, front, middle);
+	MergeSort(values, middle + 1, back);
+	merge(values, front, middle, back);
+
+	return;
+}
+```
+
+복잡도 : O(N * logN)
+
+0 회차 : 배열을 모두 잘게 자른다. => N
+1 회차 : N개의 배열을 N/2개로 Merge한다. => N
+K 회차 : N- K - 1개의 배열을 Merge한다. => N
+
+총 시행 횟수 : N + N + N + ... + N = N + logN
