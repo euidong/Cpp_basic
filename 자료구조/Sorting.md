@@ -90,6 +90,10 @@ K차시 시행 횟수 : N - K
 (앞에서 시작하면 앞에서부터 정렬리스트가 생성되고, 뒤에서 시작하면 뒤에서부터이다.)
 
 한 번 정렬되었더라도 그 위치가 고정이 아니다.
+
+
+	1) 배열에 새로운 값을 삽입하는 함수를 만든다.
+	2) 배열의 크기를 늘리며 그 함수를 N번 호출한다.
 ```c++
 void InsertItem(Student ary[], int startIndex, int endIndex) // 임시 정렬 리스트에 값을 삽입
 {
@@ -125,4 +129,3 @@ void InsertionSort(Student ary[], int numElems)
 K차 시행 횟수 : 최대 K (뒤에서 K+1 번째 원소와 뒤에 있는 값을 비교한다.)
 
 총 시행 횟수 : 1 + 2 + ... + N - 1 => (Worst case) N * (N - 1) / 2
-
