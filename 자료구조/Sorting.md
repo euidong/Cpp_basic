@@ -90,11 +90,39 @@ K차시 시행 횟수 : N - K
 (앞에서 시작하면 앞에서부터 정렬리스트가 생성되고, 뒤에서 시작하면 뒤에서부터이다.)
 
 한 번 정렬되었더라도 그 위치가 고정이 아니다.
+```c++
+void InsertItem(Student ary[], int startIndex, int endIndex) // 임시 정렬 리스트에 값을 삽입
+{
+	bool finished = false;
+	int current = endIndex;
+	bool moreToSearch = (current != startIndex);
+	string name1, name2;
 
+	while (moreToSearch && !finished)
+	{
+		name1 = ary[current].getName();
+		name2 = ary[current - 1].getName();
+		if (name1 < name2)
+		{
+			Swap(ary[current], ary[current - 1]);
+			current--;
+			moreToSearch = (current != startIndex);
+		}
+		else
+			finished = true;
+	}
+}
 
+void InsertionSort(Student ary[], int numElems)
+{
+	for (int count = 0; count < numElems; count++) //앞에 부분은 임시 정렬 리스트
+		InsertItem(ary, 0, count);
+}
+```
 원자의 수 : N
 1차 시행 횟수 : 1 (뒤에서 두번째 원소와 맨 뒤 원소를 비교한다.) 
-2차 시행 홧수 : 2 (뒤에서 세 번째 원소와 뒤에 있는 값을 비교한다.)
+2차 시행 홧수 : 최대 2 (뒤에서 세 번째 원소와 뒤에 있는 값을 비교한다.)
+K차 시행 횟수 : 최대 K (뒤에서 K+1 번째 원소와 뒤에 있는 값을 비교한다.)
 
-  
+총 시행 횟수 : 1 + 2 + ... + N - 1 => (Worst case) N * (N - 1) / 2
 
