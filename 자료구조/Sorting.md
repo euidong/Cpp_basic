@@ -2,7 +2,7 @@
 대상을 정렬하는 방법.
 `크게는 두 종류 : simple, complex`
 
-## Simple Sort Algorithm
+## Simple Sorting Algorithm
   1. Selection Sort
   2. Bubble Sort
   3. Insertion Sort
@@ -32,10 +32,10 @@ for (int i = 0 ; i < size ; i++)
 ```
 복잡도 : O(N^2)
 
-원소의 수 : N
-1차시 시행 횟수 : N
-2차시 시행 횟수 : N - 1
-K차시 시행 횟수 : N - (K - 1)
+원소의 수 : N <br>
+1차시 시행 횟수 : N<br>
+2차시 시행 횟수 : N - 1<br>
+K차시 시행 횟수 : N - (K - 1)<br>
 
 총 시행 횟수 : N + (N - 1) + ... + 1 = N * (N + 1) / 2
 
@@ -76,14 +76,15 @@ void bubble_Sort(int* arr, int size)
 }
 ```
 복잡도 : O(N^2)
-원소의 수 : N
-1차시 시행 횟수 : N - 1
-2차시 시행 횟수 : N - 2
-K차시 시행 횟수 : N - K
+
+원소의 수 : N<br>
+1차시 시행 횟수 : N - 1<br>
+2차시 시행 횟수 : N - 2<br>
+K차시 시행 횟수 : N - K<br>
 
 총 시행 횟수 : (N - 1) + (N - 2) + ... + (... + 1) =>(Worst Case) N * (N + 1) / 2
 
-###3. Insertion Sort
+### 3. Insertion Sort
 평상 시 카드 정리할 때를 생각하면 쉽게 이해할 수 있다. 어지러진 카드 리스트에서 하나씩 뽑으며 정렬 리스트를 만들고, 다시 하나씩 뽑아 정렬하는 알고리즘.
 
 기존 리스트에서 하나를 뽑아 리스트에서 쪼개진 정렬 리스트에 삽입하는 알고리즘. <br>
@@ -92,7 +93,7 @@ K차시 시행 횟수 : N - K
 한 번 정렬되었더라도 그 위치가 고정이 아니다.
 
 
-	1) 배열에 새로운 값을 삽입하는 함수를 만든다.
+	1) sorting된 배열에 새로운 값을 삽입하는 함수를 만든다.
 	2) 배열의 크기를 늘리며 그 함수를 N번 호출한다.
 ```c++
 void InsertItem(Student ary[], int startIndex, int endIndex) // 임시 정렬 리스트에 값을 삽입
@@ -123,9 +124,73 @@ void InsertionSort(Student ary[], int numElems)
 		InsertItem(ary, 0, count);
 }
 ```
+복잡도 : O(N^2)
+
 원자의 수 : N
-1차 시행 횟수 : 1 (뒤에서 두번째 원소와 맨 뒤 원소를 비교한다.) 
-2차 시행 홧수 : 최대 2 (뒤에서 세 번째 원소와 뒤에 있는 값을 비교한다.)
-K차 시행 횟수 : 최대 K (뒤에서 K+1 번째 원소와 뒤에 있는 값을 비교한다.)
+
+1차 시행 횟수 : 1 (뒤에서 두번째 원소와 맨 뒤 원소를 비교한다.) <br>
+2차 시행 홧수 : 최대 2 (뒤에서 세 번째 원소와 뒤에 있는 값을 비교한다.)<br>
+K차 시행 횟수 : 최대 K (뒤에서 K+1 번째 원소와 뒤에 있는 값을 비교한다.)<br>
 
 총 시행 횟수 : 1 + 2 + ... + N - 1 => (Worst case) N * (N - 1) / 2
+
+=> 항상 그런 것은 아니지만, 대게 적은 수를 Sorting할 때는 속도가 빠르다.
+
+### Bubble VS Insert
+=> bubble : 모든 시행을 안할 수도 있지만, 한 번 시행 시 모든 값을 탐색해야한다.
+=> insert : 모든 시행을 해야하지만, 시행 시에 모든 값을 탐색하지 않는 경우가 많다.
+## Complex Sorting Algorithm
+
+### 1. Heap Sort
+Selection Sort와 같은 논리로 가장 작은 수를 찾아서 앞에서부터 채웁니다.<br>
+But, Heap을 이용합니다.
+
+	1. Maximum Heap 형태로 데이터를 재정렬합니다.
+	2. Maximum Heap에서 값을 뽑습니다.
+	3. 제일 끝에 값(Max로 저장된 값을 제외한)을 root로 올리고 ReHeapDown을 수행합니다.
+	4. 배열의 크기만큼 (2~3)을 수행합니다. 
+	
+Point. Heap으로 만들어야 하는 대상은 누구일까?<br>
+=> Heap의 정의 : 부모 노드가 자식 노드보다 크다.<br>
+=> Leaf 노드는 이미 Heap을 만족한다.<br>
+=> Leaf 노드를 제외하고 ReHeapDown을 수행하자.<br>
+=> <strong>Complete Tree의 Leaf 노드가 아닌 노드의 수 = N / 2 </strong>
+
+```c++
+void HeapSort(Student ary[], int numElems)
+{
+	HeapType<Student> stu(numElems);
+
+	//make heap
+	for (int i = 0; i < numElems; i++)
+	{
+		stu.elements[i] = ary[i];
+	}
+
+	for (int i = numElems / 2 -1; i >= 0; i--)
+	{
+		stu.ReheapDown(i,i * 2);
+	}
+
+	//heap에서 정렬하기
+	for (int i = 0; i < numElems - 1; i++)
+	{
+		Swap(stu.elements[0], stu.elements[numElems - 1 - i]);
+		stu.ReheapDown(0, numElems - 2 - i);
+	}
+
+	for (int i = 0; i < numElems; i++)
+	{
+		ary[i] = stu.elements[i];
+	}
+}
+```
+복잡도 : O(N * logN)
+
+원자의 수 : N
+
+0 회차 : Heap으로 만들기 => N / 2 <br>
+1 회차 : Heap에서 데이터 빼기 + leaf Node를 위로 올리고 ReHeapDown => 최대 logN <br>
+K 회차 :                         //			       => 최대 logN
+
+총 시행 횟수 : N / 2 + logN * N => (Worst case) N * logN
