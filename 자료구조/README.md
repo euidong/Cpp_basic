@@ -35,7 +35,7 @@
 
 # Sorting 
 ### 1. Simple Sorting Algorithm
-#### 1) 
+#### 1) selection sort
 #### 2) bubble sort
 #### 3) insertion sort
 
