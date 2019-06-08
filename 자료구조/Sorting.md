@@ -346,5 +346,4 @@ K 회차 : N- K - 1개의 배열을 Merge한다. => N
 총 시행 횟수 : N + N + N + ... + N = N + logN
 
 ### 4. Hash Table Sort
-
-
+[Search - Hashing table sort](https://github.com/euidong/Cpp_basic/blob/master/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/Search.md#hash-table-sort)
