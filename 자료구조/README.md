@@ -32,7 +32,6 @@
 
 # Graph
 
-# Sorting & Search
+# Sorting 
 
-### Sorting
-### Search
+# Search
