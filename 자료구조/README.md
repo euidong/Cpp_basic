@@ -26,6 +26,12 @@
 ### Binary Tree
 ### Binary Search Tree
 
+# Heap & PQ
+### Heap
+### PQ
+
+# Graph
+
 # Sorting & Search
 
 ### Sorting
