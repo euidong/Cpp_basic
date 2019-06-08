@@ -93,7 +93,7 @@ void PQType<ItemType>::Enqueue(ItemType newItem)
   {
     length++;
     items.elements[length-1] = newItem;
-    items.NonrecursiveRHU(0, length-1);
+    items.ReHeapUp(0, length-1);
   }
 }
 ```
@@ -111,7 +111,7 @@ void PQType<ItemType>::Dequeue(ItemType& item)
     item = items.elements[0];
     items.elements[0] = items.elements[length-1];
     length--;
-    items.NonrecursiveRHD(0, length-1);
+    items.ReHeapDown(0, length-1);
   }
 }
 ```
