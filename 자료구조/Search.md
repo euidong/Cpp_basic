@@ -45,6 +45,7 @@ int BinarySearch(int ary[], int data, int front, int back)
 기존의 binary Search가 여러 물체를 한줄로 세웠다면, Hashing 방법은 서랍장에 물체를 담는 방식으로 생각하면 쉽다.
 한 마디로 같은 줄에 여러 명을 세우는 거 같은 효과를 가져다준다.
 
+Hash Table의 원리.
   1. 데이터에서 Key로 쓸 값을 정한다.
   2. Key값과 Hash 함수를 통해 index를 얻는다.
   3. Hash Table에 해당 index위치에 데이터를 저장한다.<br>
@@ -53,6 +54,7 @@ int BinarySearch(int ary[], int data, int front, int back)
   // 비어 있는 칸이 있다면 그곳에 넣는다. or linked list 방식을 이용해서 공간을 더 확보한다.
   5. Search할 때는 Key값을 통해 얻은 index로 데이터에 바로 접근한다.
 
+Hash Table 실생활 예시.
   1. 옷을 어떻게 정리할지 정한다. (반팔, 긴팔, 반바지, 바지, 등)
   2. 종류에 따라 서랍장의 몇 층에 넣을지 정한다.
   3. 각 각에 층에 옷을 알맞게 넣는다.
