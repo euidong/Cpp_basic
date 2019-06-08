@@ -2,7 +2,7 @@
 = Binary Tree + 2개의 조건.
 
     1. Complete Tree이다.
-    2. 부모노드는 자식 노드보다 크다.(작다) <br>
+    2. 부모노드는 자식 노드보다 크다.(작다)
     //크면 MaxHeap, 작으면 MinHeap
     
 ## Heap의 표현
