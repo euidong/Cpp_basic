@@ -48,7 +48,7 @@ int BinarySearch(int ary[], int data, int front, int back)
 ### Hashing의 원리.
  	 1. 데이터에서 Key로 쓸 값을 정한다.
  	 2. Key값과 Hash 함수를 통해 index를 얻는다.
-	  3. Hash Table에 해당 index위치에 데이터를 저장한다.<br>
+	 3. Hash Table에 해당 index위치에 데이터를 저장한다.<br>
  	 // 여기서 Hash Table이란 어려운 말 같지만, 단지 데이터를 저장하는 배열이다.
  	 4. Collision을 각자의 방식으로 해결한다. <br>
  	 // 비어 있는 칸이 있다면 그곳에 넣는다. or linked list 방식을 이용해서 공간을 더 확보한다.
@@ -81,3 +81,11 @@ int BinarySearch(int ary[], int data, int front, int back)
 	=> Hash Table를 linked list 배열로 만들고 중복이 발생할 시 link를 확장하는 방식을 택한다.
 
 ### Hash Table Sort
+Idea : N진법을 이용한 sorting
+	1. 데이터가 N진법의 수라면, N개의 Hash Table을 만든다.
+	2. 일의 자리 수가 1인 경우 1-Hash Table, 2인 경우 2-Hash Table에 저장한다. (9까지)
+	3. 이렇게 되면 데이터들은 hash Table 밖에서는 정렬되어보인다.
+	4. 데이터의 자릿수만큼 수행한다.
+	
+복잡도 : O(N)
+
