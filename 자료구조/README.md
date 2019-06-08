@@ -31,7 +31,20 @@
 ### PQ
 
 # Graph
+### 그래프의 기본
 
 # Sorting 
+### 1. Simple Sorting Algorithm
+#### 1) 
+#### 2) bubble sort
+#### 3) insertion sort
+
+### 2. Complex Sorting Algorithm
+#### 1) heap sort
+#### 2) quick sort
+#### 3) merge sort
+#### 4) hash table sort
 
 # Search
+### Binary Search
+### Hashing
