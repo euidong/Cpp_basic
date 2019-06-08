@@ -344,3 +344,7 @@ void MergeSort(Student values[], int front, int back)
 K 회차 : N- K - 1개의 배열을 Merge한다. => N
 
 총 시행 횟수 : N + N + N + ... + N = N + logN
+
+### 4. Hash Table Sort
+
+
