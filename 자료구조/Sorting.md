@@ -141,10 +141,10 @@ K차 시행 횟수 : 최대 K (뒤에서 K+1 번째 원소와 뒤에 있는 값�
 => insert : 모든 시행을 해야하지만, 시행 시에 모든 값을 탐색하지 않는 경우가 많다.
 ## Complex Sorting Algorithm
 
-  1. Heap Sort
-  2. Quick Sort
-  3. Merge Sort
-
+ 	1. Heap Sort
+  	2. Quick Sort
+  	3. Merge Sort
+	4. Hash Table Sort
 ### 1. Heap Sort
 Selection Sort와 같은 논리로 가장 작은 수를 찾아서 앞에서부터 채웁니다.<br>
 But, Heap을 이용합니다.
