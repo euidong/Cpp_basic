@@ -48,9 +48,9 @@ int BinarySearch(int ary[], int data, int front, int back)
 ### Hashing의 원리.
  	 1. 데이터에서 Key로 쓸 값을 정한다.
  	 2. Key값과 Hash 함수를 통해 index를 얻는다.
-	 3. Hash Table에 해당 index위치에 데이터를 저장한다.<br>
+	 3. Hash Table에 해당 index위치에 데이터를 저장한다.
  	 // 여기서 Hash Table이란 어려운 말 같지만, 단지 데이터를 저장하는 배열이다.
- 	 4. Collision을 각자의 방식으로 해결한다. <br>
+ 	 4. Collision을 각자의 방식으로 해결한다.
  	 // 비어 있는 칸이 있다면 그곳에 넣는다. or linked list 방식을 이용해서 공간을 더 확보한다.
  	 5. Search할 때는 Key값을 통해 얻은 index로 데이터에 바로 접근한다.
 
@@ -58,24 +58,24 @@ int BinarySearch(int ary[], int data, int front, int back)
   	1. 옷을 어떻게 정리할지 정한다. (반팔, 긴팔, 반바지, 바지, 등)
   	2. 종류에 따라 서랍장의 몇 층에 넣을지 정한다.
   	3. 각 각에 층에 옷을 알맞게 넣는다.
-  	4. 같은 층에 넣게 되는 옷이 발생하면 알맞게 이를 해결한다. <br> 
+  	4. 같은 층에 넣게 되는 옷이 발생하면 알맞게 이를 해결한다. 
   	// 비어 있는 아래칸에 넣는다 or 공간을 확보해서 같은 층에 넣는다.
   	5. 옷을 찾을 때는 해당 층에 무슨 옷이 있는지를 기억하며 바로 꺼낸다.
 
 ### Collision Problem
 데이터를 저장할 때, 한 개의 서랍에는 한 개의 데이터 밖에 담지못하는 문제가 발생한다.
 
-	1. Linear probing<Br>
-	= 바로 다음 칸이 비었는지 확인하고 없으면 넣고 있다면, 다음으로 또 넘어간다. <br>
-	값을 찾을 때는 그 위치부터 값을 찾으며 빈방을 찾읍시다.<br>
+	1. Linear probing
+	= 바로 다음 칸이 비었는지 확인하고 없으면 넣고 있다면, 다음으로 또 넘어간다. 
+	값을 찾을 때는 그 위치부터 값을 찾으며 빈방을 찾읍시다.
 	=> 데이터 삭제 시에 유의해야함. 중간에 빈칸이 생기게 된다. 한 번이라도 삭제된 적이 있는지를 알리는 flag가 필요하다.
-	2. quaratic probing<br>
+	2. quaratic probing
 	=> 중복 횟수만큼 제곱을 수행합니다.
-	3. random probing<br>
+	3. random probing
 	=> 중복 발생 시 random 수와 연산을 수행합니다. random수를 저장해야됨.
-	4. hash table size Up<br>
+	4. hash table size Up
 	=> Hash Table의 크기를 올리면 더 골고루 퍼지게 된다.
-	5. Make good Hash Function<br>
+	5. Make good Hash Function
 	=> 해당 데이터의 특징을 파악하여 가능한한 데이터를 고르게 퍼트릴 수 있는 Hash Function을 만든다.
 	6. Chain 
 	=> Hash Table를 linked list 배열로 만들고 중복이 발생할 시 link를 확장하는 방식을 택한다.
