@@ -82,6 +82,7 @@ int BinarySearch(int ary[], int data, int front, int back)
 
 ### Hash Table Sort
 Idea : N진법을 이용한 sorting
+
 	1. 데이터가 N진법의 수라면, N개의 Hash Table을 만든다.
 	2. 일의 자리 수가 1인 경우 1-Hash Table, 2인 경우 2-Hash Table에 저장한다. (9까지)
 	3. 이렇게 되면 데이터들은 hash Table 밖에서는 정렬되어보인다.
