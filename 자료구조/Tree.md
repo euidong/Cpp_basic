@@ -11,7 +11,8 @@
   - Level = Root Node를 기준으로 아래로 갈 수록 level은 증가한다.(root node는 대게 level 0으로 생각한다.) 
   - Height = Level의 갯수를 의미
   - Full Tree = 모든 Level이 꽉 차 있는 Tree.
-  - Composit Tree = 모든 Node가 가질 수 있는 모든 자식 Node를 갖거나, Leaf Node여야 한다.
+  - Complete Tree = 최하위단 외에 모든 층이 꽉 차 있는 Tree.
+  
   
 ### Tree의 특징
   - Root Node로 부터 다른 Node에 접근하는 경로가 유일해야 한다.
