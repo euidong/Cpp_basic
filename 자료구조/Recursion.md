@@ -45,6 +45,6 @@ _____________________
                     |______________________                         |
                                            |                        |
                                            |________________________|   
-(generic case1)  (generic case2)    (base case)                                                 
+(generic case1)         (generic case2)         (base case)                                                 
 ```
 
